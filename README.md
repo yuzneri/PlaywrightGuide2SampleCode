@@ -15,7 +15,7 @@
 
 ### 動作方法
 #### ネイティブ
-- `npx playwright test`
+- `APP_ENV=native npx playwright test`
 
 #### Docker
-- `docker compose run playwright npx playwright test`
+- `docker compose run -e APP_ENV=docker playwright npx playwright test`

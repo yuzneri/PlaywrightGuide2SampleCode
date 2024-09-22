@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Initialize application
         run: |
-          cp .env.docker .env
+          cp .env.ci .env
           docker compose build
           docker compose up -d
           docker compose exec php composer install
@@ -42,7 +42,7 @@ jobs:
 
       - name: Run Playwright tests
         run: |
-          docker compose run -e CI=true playwright npx playwright test
+          docker compose run -e CI=true -e APP_ENV=docker playwright npx playwright test
 
       - uses: actions/upload-artifact@v4
         if: always()

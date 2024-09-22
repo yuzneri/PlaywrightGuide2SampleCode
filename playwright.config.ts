@@ -9,7 +9,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const envFile = path.resolve(__dirname, `.env.${process.env.APP_ENV}`);
 export const STORAGE_STATE_PATH = path.join(__dirname, 'e2e/.auth/');
-
 if (fs.existsSync(envFile)) {
     dotenv.config({path: envFile});
 } else {

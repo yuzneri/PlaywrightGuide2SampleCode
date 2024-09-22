@@ -6,7 +6,7 @@ on:
     branches: [ main, master ]
 
 jobs:
-  naitive-playwright-tests:
+  native-playwright-tests:
     env:
       TZ: 'Asia/Tokyo'
     timeout-minutes: 10
@@ -43,7 +43,7 @@ jobs:
 
       - name: Run Playwright tests
         run: |
-          npx playwright test
+          APP_ENV=native npx playwright test
 
       - uses: actions/upload-artifact@v4
         if: always()
