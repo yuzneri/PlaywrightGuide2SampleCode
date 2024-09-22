@@ -45,6 +45,19 @@ services:
             - '${FORWARD_MAILPIT_DASHBOARD_PORT:-8025}:8025'
         networks:
             - todoapp
+    playwright:
+        image: 'mcr.microsoft.com/playwright:v1.47.0-jammy'
+        ipc: host
+        environment:
+            PLAYWRIGHT_HTML_HOST: '0.0.0.0'
+            APP_ENV: 'docker'
+        ports:
+            - '9323:9323'
+        volumes:
+            - '.:/app'
+        working_dir: '/app'
+        networks:
+            - todoapp
 networks:
     todoapp:
         driver: bridge
