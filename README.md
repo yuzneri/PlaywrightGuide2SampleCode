@@ -1,5 +1,5 @@
-## Playwrightのあるきかた 続編(仮)サンプルコード
-このリポジトリは「[Playwrightのあるきかた 続編(仮)](https://neln.net/b/nt02/)」の動作確認用です
+## Playwrightのあるきかた ～E2Eテストの導入からCI構築まで～サンプルコード
+このリポジトリは「[Playwrightのあるきかた ～E2Eテストの導入からCI構築まで～](https://neln.net/b/nt02/)」の動作確認用です
 
 ### インストール
 - Dockerが動作する環境で `setup.sh` を実行
