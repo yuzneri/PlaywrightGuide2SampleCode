@@ -49,6 +49,7 @@ services:
         environment:
             PLAYWRIGHT_HTML_HOST: '0.0.0.0'
             APP_ENV: 'docker'
+            TZ: 'Asia/Tokyo'
         ports:
             - '9323:9323'
         volumes:
