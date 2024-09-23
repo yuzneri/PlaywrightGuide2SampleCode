@@ -72,6 +72,16 @@ export default defineConfig({
         },
 
         {
+            name: 'DesktopChromiumDarkModeGuest',
+            use: {
+                ...devices['Desktop Chrome'],
+                colorScheme: 'dark',
+            },
+            testDir: './e2e/guest',
+
+        },
+
+        {
             name: 'DesktopChromeLogin',
             use: {
                 ...devices['Desktop Chrome'],
