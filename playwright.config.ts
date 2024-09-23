@@ -52,23 +52,26 @@ export default defineConfig({
     projects: [
         {
             name: 'DesktopChromiumGuest',
-            use: {...devices['Desktop Chrome']},
+            use: {
+                ...devices['Desktop Chrome']
+            },
             testDir: './e2e/guest',
-            timeout: 1200000,
         },
 
         {
             name: 'DesktopFirefoxGuest',
-            use: {...devices['Desktop Firefox']},
+            use: {
+                ...devices['Desktop Firefox']
+            },
             testDir: './e2e/guest',
-            timeout: 1200000,
         },
 
         {
             name: 'DesktopSafariGuest',
-            use: {...devices['Desktop Safari']},
+            use: {
+                ...devices['Desktop Safari']
+            },
             testDir: './e2e/guest',
-            timeout: 1200000,
         },
 
         {
