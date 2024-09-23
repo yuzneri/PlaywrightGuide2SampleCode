@@ -10,11 +10,10 @@ services:
         volumes:
             - '.:/app'
             - 'todoapp-vendor:/app/vendor'
-        networks:
-            - todoapp
         depends_on:
             - mysql
             - mailpit
+
     node:
         image: 'node:22'
         ports:
@@ -23,6 +22,7 @@ services:
             - '.:/app'
         working_dir: '/app'
         tty: true
+
     mysql:
         image: 'mysql/mysql-server:8.0'
         ports:
@@ -36,15 +36,13 @@ services:
             MYSQL_ALLOW_EMPTY_PASSWORD: 1
         volumes:
             - 'todoapp-mysql:/var/lib/mysql'
-        networks:
-            - todoapp
+
     mailpit:
         image: 'axllent/mailpit:latest'
         ports:
             - '${FORWARD_MAILPIT_PORT:-1025}:1025'
             - '${FORWARD_MAILPIT_DASHBOARD_PORT:-8025}:8025'
-        networks:
-            - todoapp
+
     playwright:
         image: 'mcr.microsoft.com/playwright:v1.47.0-jammy'
         ipc: host
@@ -56,11 +54,7 @@ services:
         volumes:
             - '.:/app'
         working_dir: '/app'
-        networks:
-            - todoapp
-networks:
-    todoapp:
-        driver: bridge
+
 volumes:
     todoapp-mysql:
         driver: local
