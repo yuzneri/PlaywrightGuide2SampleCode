@@ -6,7 +6,7 @@ check_service_healthy() {
   local retries=0
 
   until (docker compose ps "$service_name" | grep -q "healthy") || [ $retries -eq $max_retries ]; do
-    echo "$service_name starting: $(docker compose ps "$service_name" | grep "$service_name")"
+    echo "Waiting for $service_name: $(docker compose ps "$service_name" | grep "$service_name")"
     sleep 5
     retries=$((retries+1))
   done
@@ -25,7 +25,6 @@ docker compose build
 docker compose up -d
 docker compose exec node sh -c "npm ci && npm run build"
 docker compose exec php composer install
-docker compose up -d
 check_service_healthy mysql
 
 docker compose exec php php artisan migrate:refresh --seed --force
