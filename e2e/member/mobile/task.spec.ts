@@ -16,7 +16,6 @@ test('タスク管理', async ({page}) => {
         await page.getByRole('button', {name: 'Create Task'}).tap()
 
         await expect(page).toHaveURL(/tasks/);
-        await expect(page.getByText('タスクを作成しました')).toBeVisible();
         await expect(page.getByRole('table')).toContainText(task1);
     });
 

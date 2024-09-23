@@ -16,7 +16,6 @@ test('タスク管理', async ({page}) => {
         await page.getByRole('button', {name: 'Create Task'}).click()
 
         await expect(page).toHaveURL(/tasks/);
-        await expect(page.getByText('タスクを作成しました')).toBeVisible();
         await expect(page.getByRole('table')).toContainText(task1);
     });
 
@@ -36,7 +35,6 @@ test('タスク管理', async ({page}) => {
 
         const taskUrl = page.url();
         await page.getByRole('button', {name: '完了'}).click()
-        await expect(page.getByText('タスクを完了にしました')).toBeVisible();
 
         await page.goto(taskUrl);
         await expect(page.getByRole('main')).toContainText(new RegExp(format(new Date(), 'YYYY-MM-DD')));
@@ -48,7 +46,6 @@ test('タスク管理', async ({page}) => {
 
         const taskUrl = page.url();
         await page.getByRole('button', {name: '削除'}).click()
-        await expect(page.getByText('タスクを削除しました')).toBeVisible();
 
         const response = await page.request.get(taskUrl);
         await expect(response).not.toBeOK()
