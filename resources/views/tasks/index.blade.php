@@ -53,6 +53,7 @@
                         @endforeach
                         </tbody>
                     </table>
+                        <a href="{{ route('tasks.export') }}" class="font-semibold text-blue-500 hover:underline">CSV ダウンロード</a>
                 </div>
             </div>
         </div>

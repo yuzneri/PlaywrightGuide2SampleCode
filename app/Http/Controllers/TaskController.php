@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Maatwebsite\Excel\Facades\Excel;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use App\Exports\TaskExport;
 
 class TaskController extends Controller
 {
@@ -93,5 +97,16 @@ class TaskController extends Controller
         $task->save();
 
         return redirect()->route('tasks.index', $task)->with('success', 'タスクを完了にしました');
+    }
+
+    public function export(Request $request): BinaryFileResponse
+    {
+        return Excel::download(
+            new TaskExport($request->user()),
+            'task_' . Carbon::now()->format('YmdHi') . '.csv',
+            \Maatwebsite\Excel\Excel::CSV, [
+                'Content-Type' => 'application/octet-stream',
+            ]
+        );
     }
 }

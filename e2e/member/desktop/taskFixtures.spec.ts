@@ -55,3 +55,17 @@ testAfterCreate('タスク完了', async ({task, page}) => {
     await page.goto(taskUrl);
     await expect(page.getByRole('main')).toContainText(new RegExp(format(new Date(), 'YYYY-MM-DD')));
 });
+
+testAfterCreate('タスクエクスポート', async ({task, page}) => {
+    const downloadPromise = page.waitForEvent('download');
+    await page.getByRole('link', {name: 'CSV ダウンロード'}).click();
+    const download = await downloadPromise;
+    const readStream = await download.createReadStream();
+    let fileContent = '';
+
+    for await (const chunk of readStream) {
+        fileContent += chunk;
+    }
+
+    await expect(fileContent).toContain(task.name);
+});
