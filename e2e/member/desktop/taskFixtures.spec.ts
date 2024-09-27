@@ -53,7 +53,7 @@ testAfterCreate('タスク完了', async ({task, page}) => {
     await page.getByRole('button', {name: '完了'}).click()
 
     await page.goto(taskUrl);
-    await expect(page.getByRole('main')).toContainText(new RegExp(format(new Date(), 'YYYY-MM-DD')));
+    await expect(page.getByRole('main')).toContainText(format(new Date(), 'YYYY-MM-DD'));
 });
 
 testAfterCreate('タスクエクスポート', async ({task, page}) => {
