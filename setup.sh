@@ -21,6 +21,7 @@ check_service_healthy() {
 }
 
 cp .env.example .env
+docker compose down
 docker compose build
 docker compose up -d
 docker compose exec node sh -c "npm ci && npm run build"
