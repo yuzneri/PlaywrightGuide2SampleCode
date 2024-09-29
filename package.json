@@ -20,5 +20,9 @@
   "dependencies": {
     "@formkit/tempo": "^0.1.2",
     "dotenv": "^16.4.5"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-arm64-gnu": "^4.22.5",
+    "@rollup/rollup-linux-x64-gnu": "^4.22.5"
   }
 }
