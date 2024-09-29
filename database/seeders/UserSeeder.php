@@ -13,6 +13,12 @@ class UserSeeder extends Seeder
     {
         $users = [
             [
+                'name' => 'testUser',
+                'email' => 'test@example.com',
+                'password' => Hash::make('test'),
+                'email_verified_at' => Carbon::now(),
+            ],
+            [
                 'name' => 'desktopChrome',
                 'email' => 'desktopChrome@example.com',
                 'password' => Hash::make('desktopChrome'),
