@@ -20,7 +20,7 @@ if (fs.existsSync(envFile)) {
  */
 export default defineConfig({
     testDir: './e2e',
-    snapshotPathTemplate: '{testDir}/__screenshots__/{testFilePath}/{projectName}/{arg}{ext}',
+    snapshotPathTemplate: '{testDir}/__snapshots__/{testFilePath}/{projectName}-{platform}/{arg}{ext}',
     /* Run tests in files in parallel */
     fullyParallel: true,
     /* Fail the build on CI if you accidentally left test.only in the source code. */

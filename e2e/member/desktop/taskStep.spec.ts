@@ -1,7 +1,7 @@
 import {expect, test} from '@playwright/test';
 import {addDay, format} from "@formkit/tempo";
 
-test('タスク管理', async ({page}) => {
+test('タスクのテスト(Step)', async ({page}) => {
     const id = Math.random().toString(36).slice(-8);
     const task1 = `カレーを作る${id}`;
     const task2 = `シチューを作る${id}`;
