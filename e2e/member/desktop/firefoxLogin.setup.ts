@@ -1,12 +1,17 @@
-import {expect, test as setup} from '@playwright/test';
+import {expect, test as base} from '@playwright/test';
 import {STORAGE_STATE_PATH} from '../../../playwright.config';
+import {LoginPage} from "../../Fixtures/LoginPage";
 
-setup('デスクトップFireFoxログイン', async ({page}) => {
-    await page.goto('/login');
-    await page.getByLabel('Email').fill('desktopFirefox@example.com');
-    await page.getByLabel('Password').fill('desktopFirefox');
-    await page.getByRole('button', {name: 'LOG IN'}).click();
+const setup = base.extend<{ loginPage: LoginPage }>({
+    loginPage: async ({page}, use) => {
+        const loginPage = new LoginPage(page);
+        await loginPage.login('desktopFirefox@example.com', 'desktopFirefox')
+
+        await use(loginPage);
+    },
+});
+
+setup('デスクトップFireFoxログイン', async ({loginPage, page}) => {
     await expect(page.getByTestId('loginId')).toContainText('desktopFirefox');
-
     await page.context().storageState({path: STORAGE_STATE_PATH + 'DesktopFirefoxMember.json'});
 });

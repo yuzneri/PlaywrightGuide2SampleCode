@@ -1,7 +1,7 @@
-import {Page, Locator} from '@playwright/test';
+import {Page} from '@playwright/test';
 import {addDay, format} from "@formkit/tempo";
 
-export class Task {
+export class TaskPage {
     name: string;
     private url: string;
 

@@ -1,12 +1,17 @@
-import {expect, test as setup} from '@playwright/test';
+import {expect, test as base} from '@playwright/test';
 import {STORAGE_STATE_PATH} from '../../../playwright.config';
+import {LoginPage} from "../../Fixtures/LoginPage";
 
-setup('デスクトップSafariログイン', async ({page}) => {
-    await page.goto('/login');
-    await page.getByLabel('Email').fill('desktopSafari@example.com');
-    await page.getByLabel('Password').fill('desktopSafari');
-    await page.getByRole('button', {name: 'LOG IN'}).click();
+const setup = base.extend<{ loginPage: LoginPage }>({
+    loginPage: async ({page}, use) => {
+        const loginPage = new LoginPage(page);
+        await loginPage.login('desktopSafari@example.com', 'desktopSafari')
+
+        await use(loginPage);
+    },
+});
+
+setup('デスクトップSafariログイン', async ({loginPage, page}) => {
     await expect(page.getByTestId('loginId')).toContainText('desktopSafari');
-
     await page.context().storageState({path: STORAGE_STATE_PATH + 'DesktopSafariMember.json'});
 });
