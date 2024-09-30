@@ -1,5 +1,6 @@
 import {expect, test as setup} from '@playwright/test';
 import {STORAGE_STATE_PATH} from '../../../playwright.config';
+import path from "node:path";
 
 setup('モバイルSafariログイン', async ({page}) => {
     await page.goto('/login');
@@ -11,5 +12,5 @@ setup('モバイルSafariログイン', async ({page}) => {
     await page.getByRole('button').tap();
     await expect(page.getByRole('navigation')).toContainText('mobileSafari');
 
-    await page.context().storageState({path: STORAGE_STATE_PATH + 'MobileSafariMember.json'});
+    await page.context().storageState({path: path.join(STORAGE_STATE_PATH, 'MobileSafariMember.json')});
 });

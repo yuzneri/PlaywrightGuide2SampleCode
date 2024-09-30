@@ -97,7 +97,7 @@ export default defineConfig({
             name: 'DesktopChromeMember',
             use: {
                 ...devices['Desktop Chrome'],
-                storageState: STORAGE_STATE_PATH + 'DesktopChromeLogin.json',
+                storageState: path.join(STORAGE_STATE_PATH, 'DesktopChromeLogin.json'),
             },
             testDir: './e2e/member/desktop',
             dependencies: ['DesktopChromeLogin'],
@@ -116,7 +116,7 @@ export default defineConfig({
             name: 'DesktopFirefoxMember',
             use: {
                 ...devices['Desktop Firefox'],
-                storageState: STORAGE_STATE_PATH + 'DesktopFirefoxMember.json',
+                storageState: path.join(STORAGE_STATE_PATH, 'DesktopFirefoxMember.json'),
             },
             testDir: './e2e/member/desktop',
             dependencies: ['DesktopFirefoxLogin'],
@@ -135,7 +135,7 @@ export default defineConfig({
             name: 'DesktopSafariMember',
             use: {
                 ...devices['Desktop Safari'],
-                storageState: STORAGE_STATE_PATH + 'DesktopSafariMember.json',
+                storageState: path.join(STORAGE_STATE_PATH, 'DesktopSafariMember.json'),
             },
             testDir: './e2e/member/desktop',
             dependencies: ['DesktopSafariLogin'],
@@ -154,7 +154,7 @@ export default defineConfig({
             name: 'MobileChromeMember',
             use: {
                 ...devices['Pixel 5'],
-                storageState: STORAGE_STATE_PATH + 'MobileChromeMember.json',
+                storageState: path.join(STORAGE_STATE_PATH, 'MobileChromeMember.json'),
             },
             testDir: './e2e/member/mobile',
             dependencies: ['MobileChromeLogin'],
@@ -173,7 +173,7 @@ export default defineConfig({
             name: 'MobileSafariMember',
             use: {
                 ...devices['iPhone 12'],
-                storageState: STORAGE_STATE_PATH + 'MobileSafariMember.json',
+                storageState: path.join(STORAGE_STATE_PATH, 'MobileSafariMember.json'),
             },
             testDir: './e2e/member/mobile',
             dependencies: ['MobileSafariLogin'],

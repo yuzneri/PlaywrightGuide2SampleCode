@@ -1,6 +1,7 @@
 import {expect, test as base} from '@playwright/test';
 import {STORAGE_STATE_PATH} from '../../../playwright.config';
 import {LoginPage} from "../../Fixtures/LoginPage";
+import path from "node:path";
 
 const setup = base.extend<{ loginPage: LoginPage }>({
     loginPage: async ({page}, use) => {
@@ -13,5 +14,5 @@ const setup = base.extend<{ loginPage: LoginPage }>({
 setup('デスクトップFireFoxログイン', async ({loginPage, page}) => {
     await loginPage.login('desktopFirefox@example.com', 'desktopFirefox');
     await expect(page.getByTestId('loginId')).toContainText('desktopFirefox');
-    await page.context().storageState({path: STORAGE_STATE_PATH + 'DesktopFirefoxMember.json'});
+    await page.context().storageState({path: path.join(STORAGE_STATE_PATH, 'DesktopFirefoxMember.json')});
 });
