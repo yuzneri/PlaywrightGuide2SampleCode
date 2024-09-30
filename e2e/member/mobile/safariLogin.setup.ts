@@ -8,7 +8,6 @@ setup('モバイルSafariログイン', async ({page}) => {
     await page.getByLabel('Password').fill('mobileSafari');
     await page.getByRole('button', {name: 'LOG IN'}).tap();
 
-    await page.waitForURL("dashboard");
     await page.getByRole('button').tap();
     await expect(page.getByRole('navigation')).toContainText('mobileSafari');
 

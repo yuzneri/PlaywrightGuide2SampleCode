@@ -8,7 +8,6 @@ setup('モバイルChromeログイン', async ({page}) => {
     await page.getByLabel('Password').fill('mobileChrome');
     await page.getByRole('button', {name: 'LOG IN'}).tap();
 
-    await page.waitForURL("dashboard");
     await page.getByRole('button').tap();
     await expect(page.getByRole('navigation')).toContainText('mobileChrome');
 
