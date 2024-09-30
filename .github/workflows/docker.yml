@@ -14,11 +14,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Initialize application
+      - name: Docker up
         run: |
           cp .env.ci .env
           docker compose build
           docker compose up -d
+
+      - name: Install library
+        run: |
           docker compose exec php composer install
           docker compose exec node sh -c "npm ci && npm run build"
 
