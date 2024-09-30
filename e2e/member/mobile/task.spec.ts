@@ -8,12 +8,12 @@ test('タスク管理', async ({page}) => {
     await test.step('タスク作成', async () => {
         await page.goto('/dashboard');
         await page.getByRole('button').tap();
-        await page.getByRole('link', {name: 'Create'}).tap()
+        await page.getByRole('link', {name: 'Create'}).tap();
 
         await page.getByLabel('タスク名').fill(task1);
 
         await page.getByLabel('期日').fill(format(addDay(new Date()), 'YYYY-MM-DD'));
-        await page.getByRole('button', {name: 'Create Task'}).tap()
+        await page.getByRole('button', {name: 'Create Task'}).tap();
 
         await expect(page).toHaveURL(/tasks/);
         await expect(page.getByRole('table')).toContainText(task1);
@@ -24,7 +24,7 @@ test('タスク管理', async ({page}) => {
         await page.getByRole('link', {name: task1}).tap();
 
         const taskUrl = page.url();
-        await page.getByRole('button', {name: '削除'}).tap()
+        await page.getByRole('button', {name: '削除'}).tap();
         await expect(page.getByText('タスクを削除しました')).toBeVisible();
     });
 });

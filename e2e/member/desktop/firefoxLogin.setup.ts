@@ -5,7 +5,7 @@ import {LoginPage} from "../../Fixtures/LoginPage";
 const setup = base.extend<{ loginPage: LoginPage }>({
     loginPage: async ({page}, use) => {
         const loginPage = new LoginPage(page);
-        await loginPage.login('desktopFirefox@example.com', 'desktopFirefox')
+        await loginPage.login('desktopFirefox@example.com', 'desktopFirefox');
 
         await use(loginPage);
     },

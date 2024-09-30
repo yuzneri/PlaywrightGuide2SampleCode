@@ -5,7 +5,7 @@ import {LoginPage} from "../../Fixtures/LoginPage";
 const setup = base.extend<{ loginPage: LoginPage }>({
     loginPage: async ({page}, use) => {
         const loginPage = new LoginPage(page);
-        await loginPage.login('desktopSafari@example.com', 'desktopSafari')
+        await loginPage.login('desktopSafari@example.com', 'desktopSafari');
 
         await use(loginPage);
     },

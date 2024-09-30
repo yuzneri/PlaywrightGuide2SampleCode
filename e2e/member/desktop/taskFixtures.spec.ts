@@ -19,7 +19,7 @@ const testBeforeCreate = base.extend<{ taskPage: TaskPage }>({
 const testAfterCreate = base.extend<{ taskPage: TaskPage }>({
     taskPage: async ({page}, use) => {
         const task = new TaskPage(page);
-        await task.addTask(`カレーを作る${id()}`)
+        await task.addTask(`カレーを作る${id()}`);
 
         await use(task);
 
@@ -29,7 +29,7 @@ const testAfterCreate = base.extend<{ taskPage: TaskPage }>({
 
 testBeforeCreate('タスク作成', async ({taskPage, page}) => {
     const taskName = `カレーを作る${id()}`;
-    await taskPage.addTask(taskName)
+    await taskPage.addTask(taskName);
 
     await expect(page).toHaveURL(/tasks/);
     await expect(page.getByRole('table')).toContainText(taskName);
@@ -39,9 +39,9 @@ testAfterCreate('タスク編集', async ({taskPage, page}) => {
     const taskName = `シチューを作る${id()}`;
 
     await page.getByRole('link', {name: taskPage.name}).click();
-    await page.getByRole('link', {name: '編集'}).click()
+    await page.getByRole('link', {name: '編集'}).click();
     await page.getByLabel('タスク名').fill(taskName);
-    await page.getByRole('button', {name: '更新'}).click()
+    await page.getByRole('button', {name: '更新'}).click();
 
     await expect(page.getByRole('main')).toContainText(taskName);
 });
@@ -50,7 +50,7 @@ testAfterCreate('タスク完了', async ({taskPage, page}) => {
     await page.getByRole('link', {name: taskPage.name}).click();
 
     const taskUrl = page.url();
-    await page.getByRole('button', {name: '完了'}).click()
+    await page.getByRole('button', {name: '完了'}).click();
 
     await page.goto(taskUrl);
     await expect(page.getByRole('main')).toContainText(format(new Date(), 'YYYY-MM-DD'));
