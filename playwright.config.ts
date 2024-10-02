@@ -1,4 +1,4 @@
-import {defineConfig, devices} from '@playwright/test';
+import {defineConfig, devices, TraceMode} from '@playwright/test';
 import dotenv from 'dotenv';
 import * as path from "node:path";
 import {VideoMode} from "playwright/types/test";
@@ -30,7 +30,7 @@ export default defineConfig({
     /* Opt out of parallel tests on CI. */
     workers: process.env.CI ? 1 : undefined,
     /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-    reporter: 'html',
+    reporter: [['html', {open: 'never'}]],
     timeout: Number(process.env.TEST_TIMEOUT) ?? 30000,
     expect: {
         timeout: 30000
@@ -42,7 +42,7 @@ export default defineConfig({
         baseURL: process.env.APP_URL ?? undefined,
 
         /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-        trace: 'on-first-retry',
+        trace: process.env.USE_TRACE as TraceMode ?? 'off',
         video: process.env.USE_VIDEOS as VideoMode ?? 'off',
 
         locale: 'ja-JP',
