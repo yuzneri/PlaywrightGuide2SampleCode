@@ -17,13 +17,19 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Initialize application
+      - name: Docker up
         run: |
           cp .env.ci .env
           docker compose build
           docker compose up -d
+
+      - name: Install package
+        run: |
           docker compose exec php composer install
           docker compose exec node sh -c "npm ci && npm run build"
+
+      - name: Install playwright
+        run: |
           npx playwright install --with-deps
 
       - name: Migrate
