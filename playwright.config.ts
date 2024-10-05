@@ -181,6 +181,23 @@ export default defineConfig({
             testDir: './e2e/member/mobile',
             dependencies: ['MobileSafariLogin'],
         },
+
+        {
+            name: 'FakeMedia',
+            use: {
+                ...devices['Desktop Chrome'],
+                launchOptions: {
+                    args: [
+                        '--use-fake-device-for-media-stream',
+                        '--use-fake-ui-for-media-stream',
+                        '--use-file-for-fake-audio-capture=' + path.join(__dirname, 'e2e/fakeMedia/audio.wav'),
+                        '--use-file-for-fake-video-capture=' + path.join(__dirname, 'e2e/fakeMedia/video.y4m'),
+                    ]
+                },
+                permissions: ['camera', 'microphone']
+            },
+            testDir: './e2e/fakeMedia/',
+        },
     ],
 
     /* Run your local dev server before starting the tests */
