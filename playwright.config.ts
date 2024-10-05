@@ -48,6 +48,7 @@ export default defineConfig({
         video: process.env.USE_VIDEOS as VideoMode ?? 'off',
 
         locale: 'ja-JP',
+        timezoneId: 'Asia/Tokyo',
     },
 
     /* Configure projects for major browsers */
