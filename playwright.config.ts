@@ -59,6 +59,7 @@ export default defineConfig({
                 ...devices['Desktop Chrome']
             },
             testDir: './e2e/guest',
+            testMatch: /top\.spec\.ts/,
         },
 
         {
@@ -67,6 +68,7 @@ export default defineConfig({
                 ...devices['Desktop Firefox']
             },
             testDir: './e2e/guest',
+            testMatch: /top\.spec\.ts/,
         },
 
         {
@@ -75,6 +77,7 @@ export default defineConfig({
                 ...devices['Desktop Safari']
             },
             testDir: './e2e/guest',
+            testMatch: /top\.spec\.ts/,
         },
 
         {
@@ -84,7 +87,16 @@ export default defineConfig({
                 colorScheme: 'dark',
             },
             testDir: './e2e/guest',
+            testMatch: /top\.spec\.ts/,
+        },
 
+        {
+            name: 'mock',
+            use: {
+                ...devices['Desktop Chrome'],
+            },
+            testDir: './e2e/guest',
+            testMatch: /mock\.spec\.ts/,
         },
 
         {
