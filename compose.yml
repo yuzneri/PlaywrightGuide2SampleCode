@@ -44,7 +44,7 @@ services:
             - '${FORWARD_MAILPIT_DASHBOARD_PORT:-8025}:8025'
 
     playwright:
-        image: 'mcr.microsoft.com/playwright:v1.47.0-jammy'
+        image: 'mcr.microsoft.com/playwright:v1.47.2-jammy'
         ipc: host
         environment:
             PLAYWRIGHT_HTML_HOST: '0.0.0.0'
