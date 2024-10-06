@@ -14,6 +14,8 @@ RUN apt-get update && \
     && install-php-extensions pdo_mysql mbstring zip exif pcntl bcmath gd \
     && pecl install xdebug \
     && docker-php-ext-enable xdebug \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+
+RUN cp $PHP_INI_DIR/php.ini-development $PHP_INI_DIR/php.ini
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer

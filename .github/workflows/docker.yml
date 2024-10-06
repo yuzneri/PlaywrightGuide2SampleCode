@@ -30,7 +30,7 @@ jobs:
           max_retries=60
           retries=0
           until (docker compose ps mysql | grep -q "healthy") || [ $retries -eq $max_retries ]; do
-            echo "$service_name starting: $(docker compose ps "$service_name" | grep "$service_name")"
+            echo "mysql starting: $(docker compose ps "mysql" | grep "mysql")"
             sleep 1
             retries=$((retries+1))
           done
