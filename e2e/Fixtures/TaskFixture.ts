@@ -1,7 +1,7 @@
 import {Page} from '@playwright/test';
 import {addDay, format} from "@formkit/tempo";
 
-export class TaskPage {
+export class TaskFixture {
     name: string;
     private url: string;
 

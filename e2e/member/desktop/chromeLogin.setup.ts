@@ -1,18 +1,18 @@
 import {expect, test as base} from '@playwright/test';
 import {STORAGE_STATE_PATH} from '../../../playwright.config';
-import {LoginPage} from "../../Fixtures/LoginPage";
+import {LoginFixture} from "../../Fixtures/LoginFixture";
 import path from "node:path";
 
-const setup = base.extend<{ loginPage: LoginPage }>({
-    loginPage: async ({page}, use) => {
-        const loginPage = new LoginPage(page);
+const setup = base.extend<{ loginFixture: LoginFixture }>({
+    loginFixture: async ({page}, use) => {
+        const loginFixture = new LoginFixture(page);
 
-        await use(loginPage);
+        await use(loginFixture);
     },
 });
 
-setup('デスクトップChromeログイン', async ({loginPage, page}) => {
-    await loginPage.login('desktopChrome@example.com', 'desktopChrome');
+setup('デスクトップChromeログイン', async ({loginFixture, page}) => {
+    await loginFixture.login('desktopChrome@example.com', 'desktopChrome');
     await expect(page.getByTestId('loginId')).toContainText('desktopChrome');
     await page.context().storageState({path: path.join(STORAGE_STATE_PATH, 'DesktopChromeLogin.json')});
 });

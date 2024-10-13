@@ -1,6 +1,6 @@
 import {Page} from '@playwright/test';
 
-export class LoginPage {
+export class LoginFixture {
     constructor(public readonly page: Page) {
     }
 
