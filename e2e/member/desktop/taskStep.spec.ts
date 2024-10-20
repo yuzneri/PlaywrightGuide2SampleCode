@@ -13,7 +13,7 @@ test('タスクのテスト(Step)', async ({page}) => {
         await page.getByLabel('タスク名').fill(task1);
 
         await page.getByLabel('期日').fill(format(addDay(new Date()), 'YYYY-MM-DD'));
-        await page.getByRole('button', {name: 'Create Task'}).click();
+        await page.getByRole('button', {name: '作成'}).click();
 
         await expect(page).toHaveURL(/tasks/);
         await expect(page.getByRole('table')).toContainText(task1);

@@ -31,7 +31,7 @@
                         </div>
                         <div>
                             <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
-                                Create Task
+                                作成
                             </button>
                         </div>
                     </form>

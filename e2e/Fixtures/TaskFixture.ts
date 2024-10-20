@@ -14,7 +14,7 @@ export class TaskFixture {
         await this.page.goto('/tasks/create');
         await this.page.getByLabel('タスク名').fill(task);
         await this.page.getByLabel('期日').fill(format(addDay(new Date()), 'YYYY-MM-DD'));
-        await this.page.getByRole('button', {name: 'Create Task'}).click();
+        await this.page.getByRole('button', {name: '作成'}).click();
 
         await this.page.getByRole('link', {name: task}).click();
         this.url = this.page.url();
