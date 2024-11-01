@@ -7,13 +7,17 @@
   - node 18以上をインストール
   - `npx playwright install --with-deps` を実行
 
-### URL
+### Webアプリケーションの起動方法
+
+- `docker compose up -d`
+
+#### URL
 - アプリ
   - http://localhost
 - メール
   - http://localhost:8025
 
-### 動作方法
+### Playwrightテスト方法
 #### ネイティブ
 - `APP_ENV=native npx playwright test`
 
